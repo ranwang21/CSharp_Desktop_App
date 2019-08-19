@@ -53,6 +53,12 @@
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="999,79.8,0,0" VerticalAlignment="Top" Width="166" Height="39" Grid.Row="1"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="480,51,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtSearchLastName" HorizontalAlignment="Left" Height="23" Margin="554,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="1081,145,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" FontSize="16" FontWeight="Bold" BorderThickness="2" Background="#FFD4DBDF">
+            <TextBox.Effect>
+                <DropShadowEffect Color="#FFE2DCDC"/>
+            </TextBox.Effect>
+        </TextBox>
+        <Label Content="Total:" HorizontalAlignment="Left" Margin="1081,115,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
     </Grid>
 </Window>
