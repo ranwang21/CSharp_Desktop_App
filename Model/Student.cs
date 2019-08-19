@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DBUtility
+namespace Model
 {
-    public class Class1
+    public class Student : Person
     {
+        public int studentNumber { get; set; }
+
     }
 }

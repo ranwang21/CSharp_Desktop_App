@@ -5,8 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Student Manager" Height="450" Width="800">
+    <Grid MinWidth="1800" MinHeight="800">
+        <GroupBox Header="Search a student" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="779" FontWeight="Bold">
+            <Label Content="Student Number:" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+        </GroupBox>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="127,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="272,51,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="321,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Mobile:" HorizontalAlignment="Left" Margin="463,51,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="517,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <DataGrid HorizontalAlignment="Left" Height="184" Margin="10,115,0,0" VerticalAlignment="Top" Width="676"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="700,202,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="700,240,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="700,278,0,0" VerticalAlignment="Top" Width="75"/>
+        <GroupBox Header="Student Detail" HorizontalAlignment="Left" Height="112" Margin="10,304,0,0" VerticalAlignment="Top" Width="779" FontWeight="Bold">
+            <Label Content="Student Number:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
+        </GroupBox>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="127,332,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
     </Grid>
 </Window>
