@@ -94,5 +94,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controler\Controler.csproj">
+      <Project>{4e6b16ef-6b29-48d9-8ea1-5d6a7c0a4b7c}</Project>
+      <Name>Controler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{a394ccff-c59e-4bd4-b2c3-8c86ba7b4f4e}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{a1048083-05eb-4b96-b6e1-b5c217c5dfb2}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
