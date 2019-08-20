@@ -204,7 +204,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = true;
             txtDetailMobile.IsEnabled = true;
             dpBirthday.IsEnabled = true;
-            stackPanelGenderDp.IsEnabled = false;
+            stackPanelGenderDp.IsEnabled = true;
 
         }
 
