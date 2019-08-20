@@ -92,7 +92,7 @@ namespace StudentManager
 
                 // call the load detail method with the ID
                 LoadStudentDetail(ID);
-                
+
             }
         }
 
@@ -185,18 +185,18 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = false;
             txtDetailMobile.IsEnabled = false;
             dpBirthday.IsEnabled = false;
-
+            stackPanelGenderDp.IsEnabled = false;
         }
 
         // disable CRUD buttons
         public void DisableButton()
         {
-            // disable
+            // Enable
             btnAdd.IsEnabled = false;
             btnEdit.IsEnabled = false;
             btnDelete.IsEnabled = false;
 
-            // enable
+            // disable
             txtDetailAddress.IsEnabled = true;
             txtDetailEmail.IsEnabled = true;
             txtDetailFirstName.IsEnabled = true;
@@ -204,6 +204,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = true;
             txtDetailMobile.IsEnabled = true;
             dpBirthday.IsEnabled = true;
+            stackPanelGenderDp.IsEnabled = true;
 
         }
 
@@ -249,7 +250,7 @@ namespace StudentManager
             if (actionFlag == 1)
             {
                 objListStudent = objStudentServices.GetAllStudent(); // refresh from server
-                LoadStudent(objListStudent); 
+                LoadStudent(objListStudent);
             }
         }
 
@@ -260,11 +261,11 @@ namespace StudentManager
             if (!CheckInput())
             {
                 return;
-            } 
+            }
 
             switch (actionFlag)
             {
-                case 1: 
+                case 1:
                     // Add
 
                     break;
