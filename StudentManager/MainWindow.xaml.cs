@@ -263,6 +263,19 @@ namespace StudentManager
                 return;
             }
 
+            // after passing the validation, do the encapsulation (form a new student obj)
+            Student objStudent = new Student
+            {
+                ID = Convert.ToInt32(txtDetailID.Text.Trim()),
+                firstName = txtDetailFirstName.Text.Trim(),
+                lastName = txtDetailLastName.Text.Trim(),
+                birthday = Convert.ToDateTime(dpBirthday.Text),
+                gender = rbMale.IsChecked == true ? "H" : "F",
+                mobile = txtDetailMobile.Text,
+                adress = txtDetailAddress.Text,
+                email = txtDetailEmail.Text
+            };
+
             switch (actionFlag)
             {
                 case 1:
