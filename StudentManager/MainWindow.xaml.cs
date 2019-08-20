@@ -293,7 +293,7 @@ namespace StudentManager
             // check if student id is an int
             if (!txtDetailID.ToString().All(char.IsDigit)) // credit to: https://stackoverflow.com/questions/1752499/c-sharp-testing-to-see-if-a-string-is-an-integer
             {
-                MessageBox.Show("Student ID already exists!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Student ID should be Integer!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
