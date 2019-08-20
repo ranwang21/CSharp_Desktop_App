@@ -65,7 +65,7 @@ namespace StudentManager
             txtDetailLastName.Text = objStudent.lastName.ToString();
             dpBirthday.Text = objStudent.birthday.ToString("MM-dd-yyyy");
             txtDetailMobile.Text = objStudent.mobile.ToString();
-            if (objStudent.gender.ToString() == "H")
+            if (objStudent.gender.ToString().Trim() == "H")
             {
                 rbMale.IsChecked = true;
             }
