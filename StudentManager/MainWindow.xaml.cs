@@ -27,6 +27,9 @@ namespace StudentManager
         private List<Student> objListQuery = new List<Student>(); // store the result of a search query
         private StudentServices objStudentServices = new StudentServices(); // instantialize the service in DAL to handle student info access
 
+        // flag to check if its add or edit operation. 1 --> add; 2 --> edit
+        private int actionFlag = 0; 
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,6 +46,9 @@ namespace StudentManager
 
             // show total students count
             lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+
+            // enable buttons
+            EnableButton();
         }
 
         private void LoadStudentDetail(string ID)
@@ -151,7 +157,7 @@ namespace StudentManager
             {
                 // add all students into the table
                 dgStudent.ItemsSource = null;
-                dgStudent.ItemsSource = objList;z
+                dgStudent.ItemsSource = objList;
 
                 // show current student detail information (default the first row) 
                 dgStudent.SelectedIndex = 0;
@@ -160,7 +166,80 @@ namespace StudentManager
         }
 
 
-        // when a row is selected by user, load detail of that student into detail window
+        // enable CRUD buttons
+        private void EnableButton()
+        {
+            // Enable
+            btnAdd.IsEnabled = true;
+            btnEdit.IsEnabled = true;
+            btnDelete.IsEnabled = true;
 
+            // disable
+            txtDetailAddress.IsEnabled = false;
+            txtDetailEmail.IsEnabled = false;
+            txtDetailFirstName.IsEnabled = false;
+            txtDetailID.IsEnabled = false;
+            txtDetailLastName.IsEnabled = false;
+            txtDetailMobile.IsEnabled = false;
+        }
+
+        // disable CRUD buttons
+        public void DisableButton()
+        {
+            // Enable
+            btnAdd.IsEnabled = false;
+            btnEdit.IsEnabled = false;
+            btnDelete.IsEnabled = false;
+
+            // disable
+            txtDetailAddress.IsEnabled = true;
+            txtDetailEmail.IsEnabled = true;
+            txtDetailFirstName.IsEnabled = true;
+            txtDetailID.IsEnabled = true;
+            txtDetailLastName.IsEnabled = true;
+            txtDetailMobile.IsEnabled = true;
+        }
+
+        // add a student
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            // disable all CRUD buttons
+            DisableButton();
+
+            // change action flag
+            actionFlag = 1;
+        }
+
+        // edit a student info
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            // disable all CRUD buttons
+            DisableButton();
+
+            // change action flag
+            actionFlag = 2;
+        }
+
+        // cancel button
+        private void BtnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            // enable buttons
+            EnableButton();
+        }
+
+        // submit button
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            switch (actionFlag)
+            {
+                case 1:
+                    // TBC
+
+                    break;
+                case 2:
+                    // edic TBC
+                    break;
+            }
+        }
     }
 }
