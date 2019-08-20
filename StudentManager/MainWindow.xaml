@@ -49,7 +49,7 @@
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="1081,314,0,0" VerticalAlignment="Top" Width="100" Height="39"/>
         <GroupBox Header="Student Detail" HorizontalAlignment="Left" Height="175" Margin="9,360,0,0" VerticalAlignment="Top" Width="1172" FontWeight="Bold" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
 
-            <StackPanel Orientation="Horizontal" Margin="0,22,0.2,0.2">
+            <StackPanel Name="stackPanelGenderDp" Orientation="Horizontal" Margin="0,22,0.2,0.2">
                 <Label Content="Gender:" HorizontalAlignment="Left" Margin="10,76,20,0" VerticalAlignment="Top" RenderTransformOrigin="0.037,0.344" FontWeight="Normal" />
                 <RadioButton x:Name="rbMale" Content="male" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
                 <RadioButton x:Name="rbFemale" Content="female" HorizontalAlignment="Left" Margin="12,82,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
