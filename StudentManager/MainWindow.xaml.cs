@@ -184,6 +184,7 @@ namespace StudentManager
             txtDetailID.IsEnabled = false;
             txtDetailLastName.IsEnabled = false;
             txtDetailMobile.IsEnabled = false;
+            dpBirthday.IsEnabled = false;
         }
 
         // disable CRUD buttons
@@ -201,6 +202,7 @@ namespace StudentManager
             txtDetailID.IsEnabled = true;
             txtDetailLastName.IsEnabled = true;
             txtDetailMobile.IsEnabled = true;
+            dpBirthday.IsEnabled = true;
         }
 
         // add a student (preparation for adding)
