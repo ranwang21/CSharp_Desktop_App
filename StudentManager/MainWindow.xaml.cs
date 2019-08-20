@@ -280,7 +280,10 @@ namespace StudentManager
             {
                 case 1:
                     // Add
+                    if (true)
+                    {
 
+                    }
                     break;
                 case 2:
                     // Edit

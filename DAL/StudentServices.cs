@@ -398,5 +398,29 @@ namespace DAL
                 throw ex;
             }
         }
+
+        // add a new student to database
+        public int AddStudent(Student objStudent)
+        {
+            // prepare sql code
+            string sql = "INSERT INTO Student " +
+                "(Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email) " +
+                "VALUES({0},'{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')";
+
+            sql = string.Format(sql, objStudent.ID, objStudent.gender,
+                objStudent.firstName, objStudent.lastName, objStudent.birthday,
+                objStudent.adress, objStudent.mobile, objStudent.email);
+
+            // access DB
+            try
+            {
+                return SqlHelper.Update(sql);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
