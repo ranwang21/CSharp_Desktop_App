@@ -29,7 +29,7 @@ namespace StudentManager
         private StudentServices objStudentServices = new StudentServices(); // instantialize the service in DAL to handle student info access
 
         // flag to check if its add or edit operation. 1 --> add; 2 --> edit
-        private int actionFlag = 0; 
+        private int actionFlag = 0;
 
         public MainWindow()
         {
@@ -92,7 +92,7 @@ namespace StudentManager
 
                 // call the load detail method with the ID
                 LoadStudentDetail(ID);
-                
+
             }
         }
 
@@ -185,6 +185,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = false;
             txtDetailMobile.IsEnabled = false;
             dpBirthday.IsEnabled = false;
+            stackPanelGenderDp.IsEnabled = false;
         }
 
         // disable CRUD buttons
@@ -203,6 +204,8 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = true;
             txtDetailMobile.IsEnabled = true;
             dpBirthday.IsEnabled = true;
+            stackPanelGenderDp.IsEnabled = false;
+
         }
 
         // add a student (preparation for adding)
@@ -247,7 +250,7 @@ namespace StudentManager
             if (actionFlag == 1)
             {
                 objListStudent = objStudentServices.GetAllStudent(); // refresh from server
-                LoadStudent(objListStudent); 
+                LoadStudent(objListStudent);
             }
         }
 
@@ -258,11 +261,11 @@ namespace StudentManager
             if (!CheckInput())
             {
                 return;
-            } 
+            }
 
             switch (actionFlag)
             {
-                case 1: 
+                case 1:
                     // Add
 
                     break;
