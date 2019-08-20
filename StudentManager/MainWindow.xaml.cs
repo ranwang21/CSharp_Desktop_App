@@ -29,7 +29,7 @@ namespace StudentManager
         private StudentServices objStudentServices = new StudentServices(); // instantialize the service in DAL to handle student info access
 
         // flag to check if its add or edit operation. 1 --> add; 2 --> edit
-        private int actionFlag = 0; 
+        private int actionFlag = 0;
 
         public MainWindow()
         {
