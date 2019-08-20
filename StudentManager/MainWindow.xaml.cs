@@ -169,7 +169,6 @@ namespace StudentManager
             }
         }
 
-
         // enable CRUD buttons
         private void EnableButton()
         {
