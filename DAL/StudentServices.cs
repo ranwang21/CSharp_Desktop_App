@@ -371,5 +371,32 @@ namespace DAL
                 throw ex;
             }
         }
+
+        // check if a student id already exists
+        public bool IsExistSNO(string ID)
+        {
+            string sql = "SELECT COUNT(*) FROM STUDENT WHERE Id_Student={0}";
+            sql = string.Format(sql, ID);
+
+            try
+            {
+                SqlDataReader objReader = SqlHelper.GetReader(sql);
+
+                // if the returned reader has data, then id already exists, return false, else return true
+                if (!objReader.HasRows)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using Model;
 using DAL;
 using System.Data;
+using Controler;
 
 namespace StudentManager
 {
@@ -200,11 +201,23 @@ namespace StudentManager
             txtDetailMobile.IsEnabled = true;
         }
 
-        // add a student
+        // add a student (preparation for adding)
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             // disable all CRUD buttons
             DisableButton();
+
+            // vide the detail input fields
+            txtDetailAddress.Text = string.Empty;
+            txtDetailEmail.Text = string.Empty;
+            txtDetailFirstName.Text = string.Empty;
+            txtDetailID.Text = string.Empty;
+            txtDetailLastName.Text = string.Empty;
+            txtDetailMobile.Text = string.Empty;
+            rbMale.IsChecked = true; // default as male
+
+            // focus on student ID input
+            txtDetailID.Focus();
 
             // change action flag
             actionFlag = 1;
@@ -225,21 +238,77 @@ namespace StudentManager
         {
             // enable buttons
             EnableButton();
+
+            // reload the table
+            if (actionFlag == 1)
+            {
+                objListStudent = objStudentServices.GetAllStudent(); // refresh from server
+                LoadStudent(objListStudent); 
+            }
         }
 
         // submit button
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
+            // validation of the entries
+            if (!CheckInput())
+            {
+                return;
+            } 
+
             switch (actionFlag)
             {
-                case 1:
-                    // TBC
+                case 1: 
+                    // Add
 
                     break;
                 case 2:
-                    // edic TBC
+                    // Edit
                     break;
             }
+        }
+
+        // data validation
+        private bool CheckInput()
+        {
+            // check student id is not empty
+            if (string.IsNullOrWhiteSpace(txtDetailID.Text))
+            {
+                MessageBox.Show("Student ID cannot be empty!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            // check if student id is repetitive (only when adding a student)
+            if (actionFlag == 1)
+            {
+                if (objStudentServices.IsExistSNO(txtDetailID.Text.Trim()))
+                {
+                    MessageBox.Show("Student ID already exists!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return false;
+                }
+            }
+
+            // check if student id is an int
+            if (!txtDetailID.ToString().All(char.IsDigit)) // credit to: https://stackoverflow.com/questions/1752499/c-sharp-testing-to-see-if-a-string-is-an-integer
+            {
+                MessageBox.Show("Student ID already exists!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            // check if email is valid
+            if (!Validate.ValidateEmail(txtDetailEmail.Text.Trim()))
+            {
+                MessageBox.Show("Invalid Email!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            // check if mobile number is valid
+            if (!Validate.ValidateMobile(txtDetailMobile.Text.Trim()))
+            {
+                MessageBox.Show("Invalid mobile number!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            return true;
         }
     }
 }

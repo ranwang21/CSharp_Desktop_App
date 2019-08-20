@@ -45,6 +45,10 @@
     <Compile Include="StudentServices.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Controler\Controler.csproj">
+      <Project>{4e6b16ef-6b29-48d9-8ea1-5d6a7c0a4b7c}</Project>
+      <Name>Controler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DBUtility\DBUtility.csproj">
       <Project>{32468c1b-32b7-4a3a-bcc4-9cfb633b822c}</Project>
       <Name>DBUtility</Name>
