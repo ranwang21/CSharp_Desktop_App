@@ -375,7 +375,7 @@ namespace DAL
         // check if a student id already exists
         public bool IsExistSNO(string ID)
         {
-            string sql = "SELECT COUNT(*) FROM STUDENT WHERE Id_Student={0}";
+            string sql = "SELECT FirstName FROM STUDENT WHERE Id_Student={0}";
             sql = string.Format(sql, ID);
 
             try

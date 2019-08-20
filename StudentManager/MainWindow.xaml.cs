@@ -185,7 +185,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = false;
             txtDetailMobile.IsEnabled = false;
             dpBirthday.IsEnabled = false;
-            stackPanelGenderDp.IsEnabled = false;
+            
         }
 
         // disable CRUD buttons
@@ -204,7 +204,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = true;
             txtDetailMobile.IsEnabled = true;
             dpBirthday.IsEnabled = true;
-            stackPanelGenderDp.IsEnabled = true;
+            //stackPanelGenderDp.IsEnabled = true;
 
         }
 
@@ -279,12 +279,21 @@ namespace StudentManager
         // data validation
         private bool CheckInput()
         {
+            // check if student id is an int
+            int value;
+            if (!int.TryParse(txtDetailID.Text.Trim().ToString(), out value)) // credit to: https://stackoverflow.com/questions/1752499/c-sharp-testing-to-see-if-a-string-is-an-integer
+            {
+                MessageBox.Show("Student ID should be Integer!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
             // check student id is not empty
             if (string.IsNullOrWhiteSpace(txtDetailID.Text))
             {
                 MessageBox.Show("Student ID cannot be empty!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
+
             // check if student id is repetitive (only when adding a student)
             if (actionFlag == 1)
             {
@@ -295,10 +304,17 @@ namespace StudentManager
                 }
             }
 
-            // check if student id is an int
-            if (!txtDetailID.ToString().All(char.IsDigit)) // credit to: https://stackoverflow.com/questions/1752499/c-sharp-testing-to-see-if-a-string-is-an-integer
+            // check if first name is empty
+            if (string.IsNullOrWhiteSpace(txtDetailFirstName.Text))
             {
-                MessageBox.Show("Student ID should be Integer!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("First Name cannot be empty!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            // check if last name is empty
+            if (string.IsNullOrWhiteSpace(txtDetailLastName.Text))
+            {
+                MessageBox.Show("Last Name cannot be empty!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
