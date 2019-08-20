@@ -21,7 +21,7 @@
         <Label Content="Mobile:" HorizontalAlignment="Left" Margin="684,51,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtSearchMobile" HorizontalAlignment="Left" Height="23" Margin="739,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchMobile_TextChanged"/>
 
-        <DataGrid x:Name="dgStudent" HorizontalAlignment="Left" Height="240" Margin="10,115,0,0" VerticalAlignment="Top" Width="1049" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="DgStudent_SelectionChanged">
+        <DataGrid x:Name="dgStudent" HorizontalAlignment="Left" Height="240" Margin="10,115,0,0" VerticalAlignment="Top" Width="1049" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="DgStudent_SelectionChanged" IsReadOnly="true">
 
             <!--Font Color / Style-->
             <DataGrid.Resources>
@@ -34,12 +34,13 @@
             </DataGrid.Resources>
             <!--Columns header Text & Binding-->
             <DataGrid.Columns>
-                <DataGridTextColumn Header=" ID" Width="150" Binding="{Binding ID}"/>
-                <DataGridTextColumn Header=" First Name" Width="100" Binding="{Binding firstName}"/>
-                <DataGridTextColumn Header=" Last Name" Width="100" Binding="{Binding lastName}"/>
-                <DataGridTextColumn Header=" Gender" Width="100" Binding="{Binding gender}"/>
-                <DataGridTextColumn Header=" Birthday" Width="100" Binding="{Binding birthday}"/>
-                <DataGridTextColumn Header=" Mobile" Width="100" Binding="{Binding mobile}"/>
+                <DataGridTextColumn Header=" ID" Width="80" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header=" First Name" Width="80" Binding="{Binding firstName}"/>
+                <DataGridTextColumn Header=" Last Name" Width="80" Binding="{Binding lastName}"/>
+                <DataGridTextColumn Header=" Gender" Width="80" Binding="{Binding gender}"/>
+                <DataGridTextColumn Header=" Birthday" Width="80" Binding="{Binding birthday}"/>
+                <DataGridTextColumn Header=" Mobile" Width="80" Binding="{Binding mobile}"/>
+                <DataGridTextColumn Header=" Email" Width="200" Binding="{Binding email}" />
                 <DataGridTextColumn Header=" Adress" Width="*" Binding="{Binding adress}"/>
             </DataGrid.Columns>
 

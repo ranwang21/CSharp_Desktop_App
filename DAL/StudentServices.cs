@@ -43,7 +43,7 @@ namespace DAL
                                     firstName = objReader["FirstName"].ToString(),
                                     lastName = objReader["LastName"].ToString(),
                                     birthday = Convert.ToDateTime(objReader["Birthday"]),
-                                    adress = objReader["adress"].ToString(),
+                                    adress = objReader["Adress"].ToString(),
                                     mobile = objReader["Phone"].ToString(),
                                     email = objReader["Email"].ToString()
                             }

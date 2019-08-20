@@ -9,7 +9,7 @@ using System.Data;
 
 namespace DBUtility
 {
-    public class SqlHelper
+    public static class SqlHelper
     {
         /// <summary>
         /// DB Helper to manage CRUD operations

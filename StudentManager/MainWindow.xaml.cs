@@ -54,28 +54,25 @@ namespace StudentManager
 
         private void LoadStudentDetail(string ID)
         {
-            // test
-            string text = string.Format("The string is: {0}", ID);
-            //MessageBox.Show(text);
-
-
             // instantialize a Student by calling the helper method
-            //Student objStudent = objStudentServices.GetCurrentStudent(ID);
+            Student objStudent = objStudentServices.GetCurrentStudent(ID);
 
             // show details
-            //txtDetailID.Text = objStudent.ID.ToString();
-            //txtDetailFirstName.Text = objStudent.firstName.ToString();
-            //txtDetailLastName.Text = objStudent.lastName.ToString();
-            //dpBirthday.Text = objStudent.birthday.ToString("MM-dd-yyyy");
-            //txtDetailMobile.Text = objStudent.mobile.ToString();
-            //if (objStudent.gender == "H")
-            //{
-            //    rbMale.IsChecked = true;
-            //}
-            //else
-            //{
-            //    rbFemale.IsChecked = true;
-            //}
+            txtDetailID.Text = objStudent.ID.ToString();
+            txtDetailEmail.Text = objStudent.email.ToString();
+            txtDetailAddress.Text = objStudent.adress.ToString();
+            txtDetailFirstName.Text = objStudent.firstName.ToString();
+            txtDetailLastName.Text = objStudent.lastName.ToString();
+            dpBirthday.Text = objStudent.birthday.ToString("MM-dd-yyyy");
+            txtDetailMobile.Text = objStudent.mobile.ToString();
+            if (objStudent.gender.ToString() == "H")
+            {
+                rbMale.IsChecked = true;
+            }
+            else
+            {
+                rbFemale.IsChecked = true;
+            }
 
         }
 
@@ -87,9 +84,15 @@ namespace StudentManager
             }
             else
             {
-                Array result = dgStudent.SelectedCells.ToArray();
-                string str = result.GetValue(0).ToString();
-                LoadStudentDetail(str);
+                // downcase the current selected student (line in the table) to Student
+                Student selectedStu = (Student)dgStudent.SelectedItem;
+
+                // obtain the ID of the current student
+                string ID = selectedStu.ID.ToString();
+
+                // call the load detail method with the ID
+                LoadStudentDetail(ID);
+                
             }
         }
 
@@ -144,7 +147,7 @@ namespace StudentManager
             LoadStudent(objListStudent);
         }
 
-        //
+        // load student list into DataGrid
         private void LoadStudent(List<Student> objList)
         {
 
@@ -264,6 +267,7 @@ namespace StudentManager
                     break;
                 case 2:
                     // Edit
+
                     break;
             }
         }
