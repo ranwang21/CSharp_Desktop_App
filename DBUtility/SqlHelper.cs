@@ -94,18 +94,14 @@ namespace DBUtility
                 conn.Open();
 
                 // execute cmd
-                return cmd.ExecuteReader();
+                return cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }
             catch (Exception ex)
             {
                 // throw exception to UI
                 throw ex;
             }
-            finally
-            {
-                // close connection
-                conn.Close();
-            }
+
         }
 
 

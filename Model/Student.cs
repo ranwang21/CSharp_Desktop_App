@@ -8,7 +8,7 @@ namespace Model
 {
     public class Student : Person
     {
-        public int studentNumber { get; set; }
+        //public int studentNumber { get; set; }
 
     }
 }

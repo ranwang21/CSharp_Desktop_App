@@ -15,12 +15,36 @@
         <GroupBox Header="Search a student" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="1174" FontWeight="Bold">
             <Label Content="Student Number:" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
         </GroupBox>
-        <TextBox x:Name="txtSearchID" HorizontalAlignment="Left" Height="23" Margin="127,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSearchID" HorizontalAlignment="Left" Height="23" Margin="127,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchID_TextChanged" />
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="272,51,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSearchFirstName" HorizontalAlignment="Left" Height="23" Margin="346,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSearchFirstName" HorizontalAlignment="Left" Height="23" Margin="346,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchFirstName_TextChanged"/>
         <Label Content="Mobile:" HorizontalAlignment="Left" Margin="684,51,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSearchMobile" HorizontalAlignment="Left" Height="23" Margin="739,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <DataGrid HorizontalAlignment="Left" Height="240" Margin="10,115,0,0" VerticalAlignment="Top" Width="1049"/>
+        <TextBox x:Name="txtSearchMobile" HorizontalAlignment="Left" Height="23" Margin="739,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchMobile_TextChanged"/>
+
+        <DataGrid x:Name="dgStudent" HorizontalAlignment="Left" Height="240" Margin="10,115,0,0" VerticalAlignment="Top" Width="1049" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="DgStudent_SelectionChanged">
+
+            <!--Font Color / Style-->
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="SkyBlue" />
+                    <Setter Property="FontWeight" Value="SemiBold" />
+                    <Setter Property="BorderThickness" Value="0,0,1,2" />
+                    <Setter Property="BorderBrush" Value="Gray" />
+                </Style>
+            </DataGrid.Resources>
+            <!--Columns header Text & Binding-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header=" ID" Width="150" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header=" First Name" Width="100" Binding="{Binding firstName}"/>
+                <DataGridTextColumn Header=" Last Name" Width="100" Binding="{Binding lastName}"/>
+                <DataGridTextColumn Header=" Gender" Width="100" Binding="{Binding gender}"/>
+                <DataGridTextColumn Header=" Birthday" Width="100" Binding="{Binding birthday}"/>
+                <DataGridTextColumn Header=" Mobile" Width="100" Binding="{Binding mobile}"/>
+                <DataGridTextColumn Header=" Adress" Width="*" Binding="{Binding adress}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="1081,314,0,0" VerticalAlignment="Top" Width="100" Height="39"/>
         <GroupBox Header="Student Detail" HorizontalAlignment="Left" Height="175" Margin="9,360,0,0" VerticalAlignment="Top" Width="1172" FontWeight="Bold" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
 
@@ -45,15 +69,15 @@
         <TextBox x:Name="txtDetailAddress" HorizontalAlignment="Left" Height="23" Margin="101,121.8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="515" Grid.Row="1"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="554,44.8,0,0" VerticalAlignment="Top" Grid.Row="1"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="892,51,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="939,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSearchEmail" HorizontalAlignment="Left" Height="23" Margin="939,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
         <TextBox x:Name="txtDetailEmail" HorizontalAlignment="Left" Height="23" Margin="600,47.8,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="274" Grid.Row="1"/>
         <Button x:Name="btnEdit" Content="Edit" HorizontalAlignment="Left" Margin="1081,250,0,0" VerticalAlignment="Top" Width="100" Height="39"/>
-        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="1081,183,0,0" VerticalAlignment="Top" Width="100" Height="39"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="1081,183,0,0" VerticalAlignment="Top" Width="100" Height="39" />
         <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="999,9.8,0,0" VerticalAlignment="Top" Width="166" Height="39" Grid.Row="1"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="999,79.8,0,0" VerticalAlignment="Top" Width="166" Height="39" Grid.Row="1"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="480,51,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtSearchLastName" HorizontalAlignment="Left" Height="23" Margin="554,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="1081,145,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" FontSize="16" FontWeight="Bold" BorderThickness="2" Background="#FFD4DBDF">
+        <TextBox x:Name="txtSearchLastName" HorizontalAlignment="Left" Height="23" Margin="554,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchLastName_TextChanged"/>
+        <TextBox x:Name="lblTotal" HorizontalAlignment="Left" Height="23" Margin="1081,145,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" FontSize="16" FontWeight="Bold" BorderThickness="2" Background="#FFD4DBDF" IsEnabled="false" TextAlignment="Center">
             <TextBox.Effect>
                 <DropShadowEffect Color="#FFE2DCDC"/>
             </TextBox.Effect>
