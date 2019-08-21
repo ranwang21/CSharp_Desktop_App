@@ -15,9 +15,6 @@ namespace StudentManager
     {
         public App()
         {
-
-            Console.WriteLine("MachineName: {0}", Environment.MachineName);
-
         }
     }
 }
