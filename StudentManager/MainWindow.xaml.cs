@@ -26,7 +26,7 @@ namespace StudentManager
     {
         private List<Student> objListStudent = new List<Student>(); // a list to store all student info from Database
         private List<Student> objListQuery = new List<Student>(); // store the result of a search query
-       
+
 
         // flag to check if its add or edit operation. 1 --> add; 2 --> edit
         private int actionFlag = 0;
@@ -188,7 +188,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = false;
             txtDetailMobile.IsEnabled = false;
             dpBirthday.IsEnabled = false;
-            
+
         }
 
         // disable CRUD buttons
@@ -450,6 +450,12 @@ namespace StudentManager
             {
                 return;
             }
+        }
+
+        // close program
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
