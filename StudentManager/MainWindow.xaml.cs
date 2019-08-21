@@ -279,14 +279,32 @@ namespace StudentManager
             switch (actionFlag)
             {
                 case 1:
-                    // Add
-                    if (true)
+                    // Add a student
+                    try
+                    {
+                        // check if success
+                        if (objStudentServices.AddStudent(objStudent) == 1)
+                        {
+                            // refresh data on UI
+                            LoadStudent(objStudentServices.GetAllStudent());
+
+                            // button control
+                            EnableButton();
+
+                            // notify the user
+                            MessageBox.Show("Successfully added", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        }
+                    }
+                    catch (Exception ex)
                     {
 
+                        MessageBox.Show("Adding student error: " + ex.Message, "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
+
                     break;
                 case 2:
-                    // Edit
+                    // Edit a student
 
                     break;
             }
