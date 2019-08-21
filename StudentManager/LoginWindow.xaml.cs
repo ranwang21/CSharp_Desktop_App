@@ -38,9 +38,18 @@ namespace StudentManager
 
             // acquire correct username and password from server
             Connexion connServer = ConnectionServices.GetConnexions();
-            MessageBox.Show(connServer.Username);
 
-            //this.Visibility = Visibility.Hidden;
+            if(connUser.Username.ToString() == connServer.Username.ToString() && connUser.MotDePasse.ToString() == connServer.MotDePasse.ToString())
+            {
+
+            this.Visibility = Visibility.Hidden;
+                MainWindow window = new MainWindow();
+
+            }
+            else
+            {
+                MessageBox.Show("Login failed, please check your input");
+            }
             
 
         }

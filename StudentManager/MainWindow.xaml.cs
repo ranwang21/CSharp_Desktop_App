@@ -26,14 +26,15 @@ namespace StudentManager
     {
         private List<Student> objListStudent = new List<Student>(); // a list to store all student info from Database
         private List<Student> objListQuery = new List<Student>(); // store the result of a search query
-       // private StudentServices objStudentServices = new StudentServices(); // instantialize the service in DAL to handle student info access
+       
 
         // flag to check if its add or edit operation. 1 --> add; 2 --> edit
         private int actionFlag = 0;
 
         public MainWindow()
         {
-            //this.Visibility = Visibility.Hidden;
+            this.Visibility = Visibility.Visible;
+
             InitializeComponent();
 
             // (1) -- store all student info in List<Student>
