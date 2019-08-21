@@ -12,56 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
-using DAL;
 using System.Data;
 using Controler;
-using System.Data.SqlClient;
-using System.Configuration;
-using DBUtility;
 
 namespace StudentManager
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
-
-
     public partial class LoginWindow : Window
     {
-    
         private Connexion ObjListConnexion = new Connexion();
-        private ConnectionServices objConnectionServices = new ConnectionServices();
+        //private ConnectionServices objConnectionServices = new ConnectionServices();
         public LoginWindow()
         {
             InitializeComponent();
 
-            ObjListConnexion = objConnectionServices.GetConnexions();
-
-            
+            //ObjListConnexion = objConnectionServices.GetConnexions();
 
 
-            
-
-            
 
 
         }
 
         private void BouttonDeConnexion_Click(object sender, RoutedEventArgs e)
         {
-            SqlDataReader objReader = SqlHelper.connexionLogin();
-
-            Connexion conn = ConnectionServices.GetConnexions();
-            //MessageBox.Show("Clicked");
-
+            Connexion conn = new Connexion();
             if (BoxUsername.ToString() == conn.Username && BoxPassword.ToString() == conn.MotDePasse)
             {
-                
                 this.Visibility = Visibility.Hidden;
             }
-
-            
-
         }
     }
 }

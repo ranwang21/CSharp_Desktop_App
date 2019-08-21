@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace DBUtility
+namespace DAL
 {
     public static class SqlHelper
     {
@@ -16,28 +16,10 @@ namespace DBUtility
         /// </summary>
 
         // connection string
-        private static string connStrting = ConfigurationManager.ConnectionStrings["connString_Marco"].ToString();
+        //Environment.machine credit to Ahmad Sbeiti et Stephane Duval
+        private static string connStrting = ConfigurationManager.ConnectionStrings[Environment.MachineName].ToString();
 
         // *************** UPDATE *********************************
-
-
-        public static SqlDataReader connexionLogin()
-        {
-
-            string sql = "SELECT Username, MotDePasse FROM Connexion";
-            SqlConnection connexion = new SqlConnection(connStrting);
-            SqlCommand command = new SqlCommand(sql, connexion);
-
-            try
-            {
-                connexion.Open();
-                return command.ExecuteReader(CommandBehavior.CloseConnection);
-            }
-            catch (Exception exc)
-            {
-                throw exc;
-            }
-        }
         public static int Update(string sql)
         {
             // instantialize connection

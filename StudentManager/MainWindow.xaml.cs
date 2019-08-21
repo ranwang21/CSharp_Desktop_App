@@ -13,10 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
-
 using System.Data;
 using Controler;
-using DAL;
+
 
 namespace StudentManager
 {
@@ -27,14 +26,14 @@ namespace StudentManager
     {
         private List<Student> objListStudent = new List<Student>(); // a list to store all student info from Database
         private List<Student> objListQuery = new List<Student>(); // store the result of a search query
-        private StudentServices objStudentServices = new StudentServices(); // instantialize the service in DAL to handle student info access
+       // private StudentServices objStudentServices = new StudentServices(); // instantialize the service in DAL to handle student info access
 
         // flag to check if its add or edit operation. 1 --> add; 2 --> edit
         private int actionFlag = 0;
 
         public MainWindow()
         {
-            this.Visibility = Visibility.Hidden;
+            //this.Visibility = Visibility.Hidden;
             InitializeComponent();
 
             // (1) -- store all student info in List<Student>
@@ -42,13 +41,13 @@ namespace StudentManager
             dgStudent.AutoGenerateColumns = false; // forbide table to auto-genrate columns
 
             // call StudentServices to access data
-            objListStudent = objStudentServices.GetAllStudent();
+            objListStudent = BLL.GetallStudent();
 
             // load student info on table
             LoadStudent(objListStudent);
 
             // show total students count
-            lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+            lblTotal.Text = BLL.CountTotal().ToString();
 
             // enable buttons
             EnableButton();
@@ -57,7 +56,7 @@ namespace StudentManager
         private void LoadStudentDetail(string ID)
         {
             // instantialize a Student by calling the helper method
-            Student objStudent = objStudentServices.GetCurrentStudent(ID);
+            Student objStudent = BLL.LoadStudent(ID);
 
             // show details
             txtDetailID.Text = objStudent.ID.ToString();
@@ -102,7 +101,7 @@ namespace StudentManager
         private void TxtSearchID_TextChanged(object sender, TextChangedEventArgs e)
         {
             // retrieve query data
-            objListStudent = objStudentServices.GetStudentByID(txtSearchID.Text.Trim());
+            objListStudent = BLL.GetStudentByID(txtSearchID.Text.Trim());
 
             // update datagrid view
             LoadStudent(objListStudent);
@@ -113,7 +112,7 @@ namespace StudentManager
         private void TxtSearchFirstName_TextChanged(object sender, TextChangedEventArgs e)
         {
             // retrieve query data
-            objListStudent = objStudentServices.GetStudentByFirstName(txtSearchFirstName.Text.Trim());
+            objListStudent = BLL.GetStudentByF_Name(txtSearchFirstName.Text.Trim());
 
             // update datagrid view
             LoadStudent(objListStudent);
@@ -123,7 +122,8 @@ namespace StudentManager
         private void TxtSearchLastName_TextChanged(object sender, TextChangedEventArgs e)
         {
             // retrieve query data
-            objListStudent = objStudentServices.GetStudentByLastName(txtSearchLastName.Text.Trim());
+            objListStudent = BLL.GetStudentByL_Name(txtSearchLastName.Text.Trim());
+
 
             // update datagrid view
             LoadStudent(objListStudent);
@@ -133,7 +133,7 @@ namespace StudentManager
         private void TxtSearchMobile_TextChanged(object sender, TextChangedEventArgs e)
         {
             // retrieve query data
-            objListStudent = objStudentServices.GetStudentByMobile(txtSearchMobile.Text.Trim());
+            objListStudent = BLL.GetStudentByMobile(txtSearchMobile.Text.Trim());
 
             // update datagrid view
             LoadStudent(objListStudent);
@@ -143,7 +143,7 @@ namespace StudentManager
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             // retrieve query data
-            objListStudent = objStudentServices.GetStudentByEmail(txtSearchEmail.Text.Trim());
+            objListStudent = BLL.GetStudentByEmail(txtSearchEmail.Text.Trim());
 
             // update datagrid view
             LoadStudent(objListStudent);
@@ -254,7 +254,7 @@ namespace StudentManager
             // reload the table
             if (actionFlag == 1)
             {
-                objListStudent = objStudentServices.GetAllStudent(); // refresh from server
+                objListStudent = BLL.GetallStudent(); // refresh from server
                 LoadStudent(objListStudent);
             }
         }
@@ -288,16 +288,16 @@ namespace StudentManager
                     try
                     {
                         // check if success
-                        if (objStudentServices.AddStudent(objStudent) == 1)
+                        if (BLL.AddStudent(objStudent) == 1)
                         {
                             // refresh data on UI
-                            LoadStudent(objStudentServices.GetAllStudent());
+                            LoadStudent(BLL.GetallStudent());
 
                             // button control
                             EnableButton();
 
                             // re-count total student number
-                            lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+                            lblTotal.Text = BLL.CountTotal().ToString();
 
                             // notify the user
                             MessageBox.Show("Successfully added", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -317,10 +317,10 @@ namespace StudentManager
                     try
                     {
                         // check if success
-                        if (objStudentServices.UpdateStudent(objStudent) == 1)
+                        if (BLL.UpdateStudent(objStudent) == 1)
                         {
                             // refresh data on UI
-                            LoadStudent(objStudentServices.GetAllStudent());
+                            LoadStudent(BLL.GetallStudent());
 
                             // button control
                             EnableButton();
@@ -361,7 +361,7 @@ namespace StudentManager
             // check if student id is repetitive (only when adding a student)
             if (actionFlag == 1)
             {
-                if (objStudentServices.IsExistSNO(txtDetailID.Text.Trim()))
+                if (BLL.IsExistSNO(txtDetailID.Text.Trim()))
                 {
                     MessageBox.Show("Student ID already exists!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
@@ -426,13 +426,13 @@ namespace StudentManager
                 try
                 {
                     // check if success
-                    if (objStudentServices.DeleteStudent(selectedStu.ID.ToString()) == 1)
+                    if (BLL.DeleteStudent(selectedStu.ID.ToString()) == 1)
                     {
                         // refresh info
-                        LoadStudent(objStudentServices.GetAllStudent());
+                        LoadStudent(BLL.GetallStudent());
 
                         // refresh count
-                        lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+                        lblTotal.Text = BLL.CountTotal().ToString();
 
                         // notify user
                         MessageBox.Show("Deletion successful!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);

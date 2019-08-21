@@ -46,6 +46,10 @@
     <Compile Include="Validate.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{a394ccff-c59e-4bd4-b2c3-8c86ba7b4f4e}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{A1048083-05EB-4B96-B6E1-B5C217C5DFB2}</Project>
       <Name>Model</Name>

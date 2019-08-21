@@ -13,5 +13,11 @@ namespace StudentManager
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+
+            Console.WriteLine("MachineName: {0}", Environment.MachineName);
+
+        }
     }
 }
