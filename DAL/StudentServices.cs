@@ -422,5 +422,30 @@ namespace DAL
                 throw ex;
             }
         }
+
+        // update a student info
+        public int UpdateStudent(Student objStudent)
+        {
+            // prepare sql
+            string sql = "UPDATE Student " +
+                "SET Gender = '{1}', FirstName = '{2}', LastName = '{3}', " +
+                "Birthday = '{4}', Adress = '{5}', Phone = '{6}', Email = '{7}' " +
+                "WHERE Id_Student = {0}";
+
+            sql = string.Format(sql, 
+                objStudent.ID, objStudent.gender, objStudent.firstName, 
+                objStudent.lastName, objStudent.birthday, objStudent.adress, 
+                objStudent.mobile, objStudent.email);
+
+            try
+            {
+                return SqlHelper.Update(sql);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

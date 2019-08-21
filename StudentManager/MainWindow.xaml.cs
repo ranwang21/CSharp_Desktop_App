@@ -236,6 +236,9 @@ namespace StudentManager
             // disable all CRUD buttons
             DisableButton();
 
+            // diable change to ID
+            txtDetailID.IsEnabled = false;
+
             // change action flag
             actionFlag = 2;
         }
@@ -291,6 +294,9 @@ namespace StudentManager
                             // button control
                             EnableButton();
 
+                            // re-count total student number
+                            lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+
                             // notify the user
                             MessageBox.Show("Successfully added", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -303,8 +309,30 @@ namespace StudentManager
                     }
 
                     break;
+
                 case 2:
                     // Edit a student
+                    try
+                    {
+                        // check if success
+                        if (objStudentServices.UpdateStudent(objStudent) == 1)
+                        {
+                            // refresh data on UI
+                            LoadStudent(objStudentServices.GetAllStudent());
+
+                            // button control
+                            EnableButton();
+                            txtDetailID.IsEnabled = true;
+
+                            // notify the user
+                            MessageBox.Show("Successfully updated!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Updating student failed: " + ex.Message, "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
 
                     break;
             }
