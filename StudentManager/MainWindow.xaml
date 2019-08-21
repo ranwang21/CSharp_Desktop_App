@@ -46,7 +46,7 @@
 
         </DataGrid>
         
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="1081,314,0,0" VerticalAlignment="Top" Width="100" Height="39"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="1081,314,0,0" VerticalAlignment="Top" Width="100" Height="39" Click="BtnDelete_Click"/>
         <GroupBox Header="Student Detail" HorizontalAlignment="Left" Height="175" Margin="9,360,0,0" VerticalAlignment="Top" Width="1172" FontWeight="Bold" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
 
             <StackPanel Name="stackPanelGenderDp" Orientation="Horizontal" Margin="0,22,0.2,0.2">

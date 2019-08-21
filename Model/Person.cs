@@ -11,7 +11,6 @@ namespace Model
         public int ID { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public int age { get; set; }
         public string gender { get; set; }
         public DateTime birthday { get; set; }
         public string adress { get; set; }
