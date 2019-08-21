@@ -12,10 +12,10 @@ namespace DAL
     /// <summary>
     /// To access student info
     /// </summary>
-    public class StudentServices
+    public static class StudentServices
     {
         // show all student info in the table
-        public List<Student> GetAllStudent()
+        public static List<Student> GetAllStudent()
         {
             // instantialize the list of student to return
             List<Student> objList = new List<Student>();
@@ -65,7 +65,7 @@ namespace DAL
         }
 
         // get current student info
-        public Student GetCurrentStudent(string ID)
+        public static Student GetCurrentStudent(string ID)
         {
 
             // prepare the sql code to call the GetReader method
@@ -114,7 +114,7 @@ namespace DAL
         }
 
         // get total student count
-        public int GetStudentTotal()
+        public static int GetStudentTotal()
         {
             string sql = "SELECT COUNT(*) FROM student";
 
@@ -130,7 +130,7 @@ namespace DAL
         }
 
         // get student(s) by ID
-        public List<Student> GetStudentByID(string ID)
+        public static List<Student> GetStudentByID(string ID)
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
@@ -179,7 +179,7 @@ namespace DAL
         }
 
         // get student(s) by firstName
-        public List<Student> GetStudentByFirstName(string firstName)
+        public static List<Student> GetStudentByFirstName(string firstName)
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
@@ -228,7 +228,7 @@ namespace DAL
         }
 
         // get student(s) by lastName
-        public List<Student> GetStudentByLastName(string lastName)
+        public static List<Student> GetStudentByLastName(string lastName)
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
@@ -277,7 +277,7 @@ namespace DAL
         }
 
         // get student(s) by lastName
-        public List<Student> GetStudentByMobile(string mobile)
+        public static List<Student> GetStudentByMobile(string mobile)
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
@@ -326,7 +326,7 @@ namespace DAL
         }
 
         // get student(s) by lastName
-        public List<Student> GetStudentByEmail(string email)
+        public static List<Student> GetStudentByEmail(string email)
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
@@ -375,7 +375,7 @@ namespace DAL
         }
 
         // check if a student id already exists
-        public bool IsExistSNO(string ID)
+        public static bool IsExistSNO(string ID)
         {
             string sql = "SELECT FirstName FROM STUDENT WHERE Id_Student={0}";
             sql = string.Format(sql, ID);
@@ -402,7 +402,7 @@ namespace DAL
         }
 
         // add a new student to database
-        public int AddStudent(Student objStudent)
+        public static int AddStudent(Student objStudent)
         {
             // prepare sql code
             string sql = "INSERT INTO Student " +
@@ -426,7 +426,7 @@ namespace DAL
         }
 
         // update a student info
-        public int UpdateStudent(Student objStudent)
+        public static int UpdateStudent(Student objStudent)
         {
             // prepare sql
             string sql = "UPDATE Student " +
@@ -451,7 +451,7 @@ namespace DAL
         }
 
         // delete a student info
-        public int DeleteStudent(string ID)
+        public static int DeleteStudent(string ID)
         {
             string sql = "DELETE FROM Student WHERE Id_Student = {0}";
             sql = string.Format(sql, ID);

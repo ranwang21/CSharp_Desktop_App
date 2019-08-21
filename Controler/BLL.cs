@@ -8,45 +8,58 @@ using System.Threading.Tasks;
 
 namespace Controler
 {
-    class BLL
+    public static class BLL
     {
-        private StudentServices objStudentServices = new StudentServices();
-
-        public List<Student> GetallStudent()
+        public static List<Student> GetallStudent()
         {
-            List<Student> listStu = objStudentServices.GetAllStudent();
+            List<Student> listStu = StudentServices.GetAllStudent();
             return listStu;
         }
 
-        public int CountTotal()
+        public static int CountTotal()
         {
-            return objStudentServices.GetStudentTotal();
+            return StudentServices.GetStudentTotal();
         }
 
-        public Student LoadStudent(string ID)
+        public static Student LoadStudent(string ID)
         {
-            return objStudentServices.GetCurrentStudent(ID);
+            return StudentServices.GetCurrentStudent(ID);
         }
-        public List<Student> GetStudentByID(string ID)
+        public static List<Student> GetStudentByID(string ID)
         {
-            return objStudentServices.GetStudentByID(ID);
+            return StudentServices.GetStudentByID(ID);
         }
-        public List<Student> GetStudentByF_Name(string firstName)
+        public static List<Student> GetStudentByF_Name(string firstName)
         {
-            return objStudentServices.GetStudentByFirstName(firstName);
+            return StudentServices.GetStudentByFirstName(firstName);
         }
-        public List<Student> GetStudentByL_Name(string lastName)
+        public static List<Student> GetStudentByL_Name(string lastName)
         {
-            return objStudentServices.GetStudentByLastName(lastName);
+            return StudentServices.GetStudentByLastName(lastName);
         }
-        public List<Student> GetStudentByMobile(string mobile)
+        public static List<Student> GetStudentByMobile(string mobile)
         {
-            return objStudentServices.GetStudentByMobile(mobile);
+            return StudentServices.GetStudentByMobile(mobile);
         }
-        public List<Student> GetStudentByEmail(string email)
+        public static List<Student> GetStudentByEmail(string email)
         {
-            return objStudentServices.GetStudentByEmail(email);
+            return StudentServices.GetStudentByEmail(email);
         }
-
+        public static int AddStudent(Student stu)
+        {
+            return StudentServices.AddStudent(stu);
+        }
+        public static int DeleteStudent(string ID)
+        {
+            return StudentServices.DeleteStudent(ID);
+        }
+        public static int UpdateStudent(Student stu)
+        {
+            return StudentServices.UpdateStudent(stu);
+        }
+        public static bool IsExistSNO(string txt)
+        {
+            return StudentServices.IsExistSNO(txt);
+        }
     }
 }

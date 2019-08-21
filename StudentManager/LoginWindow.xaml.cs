@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Model;
-using DAL;
 using System.Data;
 using Controler;
 
@@ -31,7 +30,7 @@ namespace StudentManager
 
             ObjListConnexion = objConnectionServices.GetConnexions();
 
-            
+
 
 
         }
@@ -39,7 +38,7 @@ namespace StudentManager
         private void BouttonDeConnexion_Click(object sender, RoutedEventArgs e)
         {
             Connexion conn = new Connexion();
-            if(BoxUsername.ToString() == conn.Username && BoxPassword.ToString() == conn.MotDePasse)
+            if (BoxUsername.ToString() == conn.Username && BoxPassword.ToString() == conn.MotDePasse)
             {
                 this.Visibility = Visibility.Hidden;
             }
