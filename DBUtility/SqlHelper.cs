@@ -16,7 +16,7 @@ namespace DBUtility
         /// </summary>
 
         // connection string
-        private static string connStrting = ConfigurationManager.ConnectionStrings["connString_Marco"].ToString();
+        private static string connStrting = ConfigurationManager.ConnectionStrings["connString_Raphael"].ToString();
 
         // *************** UPDATE *********************************
         public static int Update(string sql)

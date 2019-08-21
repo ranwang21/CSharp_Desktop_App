@@ -34,6 +34,7 @@ namespace StudentManager
 
         public MainWindow()
         {
+            this.Visibility = Visibility.Hidden;
             InitializeComponent();
 
             // (1) -- store all student info in List<Student>
@@ -186,7 +187,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = false;
             txtDetailMobile.IsEnabled = false;
             dpBirthday.IsEnabled = false;
-            stackPanelGenderDp.IsEnabled = false;
+            
         }
 
         // disable CRUD buttons
@@ -205,7 +206,7 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = true;
             txtDetailMobile.IsEnabled = true;
             dpBirthday.IsEnabled = true;
-            stackPanelGenderDp.IsEnabled = true;
+            //stackPanelGenderDp.IsEnabled = true;
 
         }
 
@@ -237,6 +238,9 @@ namespace StudentManager
             // disable all CRUD buttons
             DisableButton();
 
+            // diable change to ID
+            txtDetailID.IsEnabled = false;
+
             // change action flag
             actionFlag = 2;
         }
@@ -264,14 +268,73 @@ namespace StudentManager
                 return;
             }
 
+            // after passing the validation, do the encapsulation (form a new student obj)
+            Student objStudent = new Student
+            {
+                ID = Convert.ToInt32(txtDetailID.Text.Trim()),
+                firstName = txtDetailFirstName.Text.Trim(),
+                lastName = txtDetailLastName.Text.Trim(),
+                birthday = Convert.ToDateTime(dpBirthday.Text),
+                gender = rbMale.IsChecked == true ? "H" : "F",
+                mobile = txtDetailMobile.Text,
+                adress = txtDetailAddress.Text,
+                email = txtDetailEmail.Text
+            };
+
             switch (actionFlag)
             {
                 case 1:
-                    // Add
+                    // Add a student
+                    try
+                    {
+                        // check if success
+                        if (objStudentServices.AddStudent(objStudent) == 1)
+                        {
+                            // refresh data on UI
+                            LoadStudent(objStudentServices.GetAllStudent());
+
+                            // button control
+                            EnableButton();
+
+                            // re-count total student number
+                            lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+
+                            // notify the user
+                            MessageBox.Show("Successfully added", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Adding student error: " + ex.Message, "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
 
                     break;
+
                 case 2:
-                    // Edit
+                    // Edit a student
+                    try
+                    {
+                        // check if success
+                        if (objStudentServices.UpdateStudent(objStudent) == 1)
+                        {
+                            // refresh data on UI
+                            LoadStudent(objStudentServices.GetAllStudent());
+
+                            // button control
+                            EnableButton();
+                            txtDetailID.IsEnabled = true;
+
+                            // notify the user
+                            MessageBox.Show("Successfully updated!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Updating student failed: " + ex.Message, "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
 
                     break;
             }
@@ -280,12 +343,21 @@ namespace StudentManager
         // data validation
         private bool CheckInput()
         {
+            // check if student id is an int
+            int value;
+            if (!int.TryParse(txtDetailID.Text.Trim().ToString(), out value)) // credit to: https://stackoverflow.com/questions/1752499/c-sharp-testing-to-see-if-a-string-is-an-integer
+            {
+                MessageBox.Show("Student ID should be Integer!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
             // check student id is not empty
             if (string.IsNullOrWhiteSpace(txtDetailID.Text))
             {
                 MessageBox.Show("Student ID cannot be empty!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
+
             // check if student id is repetitive (only when adding a student)
             if (actionFlag == 1)
             {
@@ -296,10 +368,17 @@ namespace StudentManager
                 }
             }
 
-            // check if student id is an int
-            if (!txtDetailID.ToString().All(char.IsDigit)) // credit to: https://stackoverflow.com/questions/1752499/c-sharp-testing-to-see-if-a-string-is-an-integer
+            // check if first name is empty
+            if (string.IsNullOrWhiteSpace(txtDetailFirstName.Text))
             {
-                MessageBox.Show("Student ID should be Integer!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("First Name cannot be empty!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            // check if last name is empty
+            if (string.IsNullOrWhiteSpace(txtDetailLastName.Text))
+            {
+                MessageBox.Show("Last Name cannot be empty!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
 
@@ -318,6 +397,58 @@ namespace StudentManager
             }
 
             return true;
+        }
+
+        // Delete a student
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            // downcase the current selected student (line in the table) to Student
+            Student selectedStu = (Student)dgStudent.SelectedItem;
+
+            // a line in table must be selected
+            if (dgStudent.SelectedItem == null)
+            {
+                // notify user
+                MessageBox.Show("You haven't selected a student", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            // prepare the notification info before deleting
+            string info = "Are you sure to delete student [" + selectedStu.ID + " - " + selectedStu.firstName + " " + selectedStu.lastName + "]?";
+
+            // show a interactive dialog for user
+            MessageBoxResult result = MessageBox.Show(info, "System Information", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            // execute delete operation according to user's choice
+            if (result == MessageBoxResult.Yes)
+            {
+                // execute delete
+                try
+                {
+                    // check if success
+                    if (objStudentServices.DeleteStudent(selectedStu.ID.ToString()) == 1)
+                    {
+                        // refresh info
+                        LoadStudent(objStudentServices.GetAllStudent());
+
+                        // refresh count
+                        lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+
+                        // notify user
+                        MessageBox.Show("Deletion successful!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Deletion failed!" + ex.Message, "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
