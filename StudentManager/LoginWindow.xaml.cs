@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Model;
 using System.Data;
 using Controler;
+using DAL;
 
 namespace StudentManager
 {
@@ -23,12 +24,12 @@ namespace StudentManager
     public partial class LoginWindow : Window
     {
         private Connexion ObjListConnexion = new Connexion();
-        //private ConnectionServices objConnectionServices = new ConnectionServices();
+       // private ConnectionServices objConnectionServices = new ConnectionServices();
         public LoginWindow()
         {
             InitializeComponent();
 
-            //ObjListConnexion = objConnectionServices.GetConnexions();
+          //  ObjListConnexion = objConnectionServices.GetConnexions();
 
 
 
