@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Model;
 using System.Data;
 using Controler;
+using DAL;
 
 namespace StudentManager
 {
@@ -22,26 +23,26 @@ namespace StudentManager
     /// </summary>
     public partial class LoginWindow : Window
     {
-        private Connexion ObjListConnexion = new Connexion();
-        //private ConnectionServices objConnectionServices = new ConnectionServices();
         public LoginWindow()
         {
             InitializeComponent();
-
-            //ObjListConnexion = objConnectionServices.GetConnexions();
-
-
-
 
         }
 
         private void BouttonDeConnexion_Click(object sender, RoutedEventArgs e)
         {
-            Connexion conn = new Connexion();
-            if (BoxUsername.ToString() == conn.Username && BoxPassword.ToString() == conn.MotDePasse)
-            {
-                this.Visibility = Visibility.Hidden;
-            }
+            // instantiate a new connection to store user input
+            Connexion connUser = new Connexion();
+            connUser.Username = BoxUsername.Text.ToString();
+            connUser.MotDePasse = BoxPassword.Password.ToString();
+
+            // acquire correct username and password from server
+            Connexion connServer = ConnectionServices.GetConnexions();
+            MessageBox.Show(connServer.Username);
+
+            //this.Visibility = Visibility.Hidden;
+            
+
         }
     }
 }

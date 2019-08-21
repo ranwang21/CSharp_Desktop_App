@@ -30,13 +30,9 @@ namespace DAL
                     if (connexionReader.Read())
                     {
 
-                        objConnexion = new Connexion()
-                        {
+                        objConnexion.Username = connexionReader["Username"].ToString();
+                        objConnexion.MotDePasse = connexionReader["MotDePass"].ToString();
 
-                            Username = connexionReader["Username"].ToString(),
-                            MotDePasse = connexionReader["MotDePasse"].ToString()
-
-                        };
                     }
 
 
