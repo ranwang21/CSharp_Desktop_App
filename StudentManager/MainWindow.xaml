@@ -39,7 +39,7 @@
                 <DataGridTextColumn Header=" Last Name" Width="80" Binding="{Binding lastName}"/>
                 <DataGridTextColumn Header=" Gender" Width="80" Binding="{Binding gender}"/>
                 <DataGridTextColumn Header=" Birthday" Width="80" Binding="{Binding birthday}"/>
-                <DataGridTextColumn Header=" Mobile" Width="80" Binding="{Binding mobile}"/>
+                <DataGridTextColumn Header=" Mobile" Width="100" Binding="{Binding mobile}"/>
                 <DataGridTextColumn Header=" Email" Width="200" Binding="{Binding email}" />
                 <DataGridTextColumn Header=" Adress" Width="*" Binding="{Binding adress}"/>
             </DataGrid.Columns>

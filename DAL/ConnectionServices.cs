@@ -10,7 +10,9 @@ namespace DAL
 {
     public static class ConnectionServices
     {
-        public static Connexion GetConnexions()
+
+        // connection helper
+        public static List<Connexion> GetConnexions()
         {
             // petit commentaire
             string login = "SELECT * FROM Connexion";
@@ -26,18 +28,21 @@ namespace DAL
                 }
                 else
                 {
-                    Connexion objConnexion = new Connexion();
-                    if (connexionReader.Read())
+                    List<Connexion> objListConn = new List<Connexion>();
+                    while (connexionReader.Read())
                     {
-
-                        objConnexion.Username = connexionReader["Username"].ToString();
-                        objConnexion.MotDePasse = connexionReader["MotDePasse"].ToString();
+                        objListConn.Add(
+                                new Connexion
+                                {
+                                    Username = connexionReader["Username"].ToString(),
+                                    MotDePasse = connexionReader["MotDePasse"].ToString()
+                                }
+                            );
 
                     }
 
-
                     connexionReader.Close();
-                    return objConnexion;
+                    return objListConn;
                 }
             }
             catch (Exception e)
@@ -46,5 +51,6 @@ namespace DAL
                 throw e;
             }
         }
+
     }
 }
