@@ -93,6 +93,8 @@ namespace DBUtility
                 // open connection
                 conn.Open();
 
+                
+
                 // execute cmd
                 return cmd.ExecuteReader(CommandBehavior.CloseConnection);
             }

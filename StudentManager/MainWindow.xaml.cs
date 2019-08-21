@@ -13,9 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
-using DAL;
+
 using System.Data;
 using Controler;
+using DAL;
 
 namespace StudentManager
 {

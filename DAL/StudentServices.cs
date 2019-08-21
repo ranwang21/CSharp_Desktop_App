@@ -324,12 +324,12 @@ namespace DAL
         }
 
         // get student(s) by lastName
-        public List<Student> GetStudentByEmail(string mobile)
+        public List<Student> GetStudentByEmail(string email)
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
             sql += " WHERE Email LIKE '{0}%'";
-            sql = string.Format(sql, mobile);
+            sql = string.Format(sql, email);
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
