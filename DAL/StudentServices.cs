@@ -447,5 +447,22 @@ namespace DAL
                 throw ex;
             }
         }
+
+        // delete a student info
+        public int DeleteStudent(string ID)
+        {
+            string sql = "DELETE FROM Student WHERE Id_Student = {0}";
+            sql = string.Format(sql, ID);
+
+            try
+            {
+                return SqlHelper.Update(sql);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

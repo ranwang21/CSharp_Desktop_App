@@ -396,5 +396,57 @@ namespace StudentManager
 
             return true;
         }
+
+        // Delete a student
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            // downcase the current selected student (line in the table) to Student
+            Student selectedStu = (Student)dgStudent.SelectedItem;
+
+            // a line in table must be selected
+            if (dgStudent.SelectedItem == null)
+            {
+                // notify user
+                MessageBox.Show("You haven't selected a student", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            // prepare the notification info before deleting
+            string info = "Are you sure to delete student [" + selectedStu.ID + " - " + selectedStu.firstName + " " + selectedStu.lastName + "]?";
+
+            // show a interactive dialog for user
+            MessageBoxResult result = MessageBox.Show(info, "System Information", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            // execute delete operation according to user's choice
+            if (result == MessageBoxResult.Yes)
+            {
+                // execute delete
+                try
+                {
+                    // check if success
+                    if (objStudentServices.DeleteStudent(selectedStu.ID.ToString()) == 1)
+                    {
+                        // refresh info
+                        LoadStudent(objStudentServices.GetAllStudent());
+
+                        // refresh count
+                        lblTotal.Text = objStudentServices.GetStudentTotal().ToString();
+
+                        // notify user
+                        MessageBox.Show("Deletion successful!", "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Deletion failed!" + ex.Message, "System Information", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }
