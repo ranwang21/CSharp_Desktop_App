@@ -19,6 +19,25 @@ namespace DBUtility
         private static string connStrting = ConfigurationManager.ConnectionStrings["connString_Raphael"].ToString();
 
         // *************** UPDATE *********************************
+
+
+        public static SqlDataReader connexionLogin()
+        {
+
+            string sql = "SELECT Username, MotDePasse FROM Connexion";
+            SqlConnection connexion = new SqlConnection(connStrting);
+            SqlCommand command = new SqlCommand(sql, connexion);
+
+            try
+            {
+                connexion.Open();
+                return command.ExecuteReader(CommandBehavior.CloseConnection);
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
         public static int Update(string sql)
         {
             // instantialize connection

@@ -1,5 +1,5 @@
 ﻿using Model;
-using DAL;
+//using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Controler
 {
-    class BLL
+  /*  class BLL
     {
         private StudentServices objStudentServices = new StudentServices();
 
@@ -48,5 +48,5 @@ namespace Controler
             return objStudentServices.GetStudentByEmail(email);
         }
 
-    }
+    }*/
 }

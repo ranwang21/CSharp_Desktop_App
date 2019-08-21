@@ -9,9 +9,9 @@ using DBUtility;
 
 namespace DAL
 {
-    public class ConnectionServices
+    public static class ConnectionServices
     {
-        public Connexion GetConnexions()
+        public static Connexion GetConnexions()
         {
             
             string login = "SELECT * FROM Connexion";

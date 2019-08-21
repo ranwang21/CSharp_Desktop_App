@@ -15,14 +15,20 @@ using Model;
 using DAL;
 using System.Data;
 using Controler;
+using System.Data.SqlClient;
+using System.Configuration;
+using DBUtility;
 
 namespace StudentManager
 {
     /// <summary>
     /// Interaction logic for LoginWindow.xaml
     /// </summary>
+
+
     public partial class LoginWindow : Window
     {
+    
         private Connexion ObjListConnexion = new Connexion();
         private ConnectionServices objConnectionServices = new ConnectionServices();
         public LoginWindow()
@@ -34,15 +40,28 @@ namespace StudentManager
             
 
 
+            
+
+            
+
+
         }
 
         private void BouttonDeConnexion_Click(object sender, RoutedEventArgs e)
         {
-            Connexion conn = new Connexion();
-            if(BoxUsername.ToString() == conn.Username && BoxPassword.ToString() == conn.MotDePasse)
+            SqlDataReader objReader = SqlHelper.connexionLogin();
+
+            Connexion conn = ConnectionServices.GetConnexions();
+            //MessageBox.Show("Clicked");
+
+            if (BoxUsername.ToString() == conn.Username && BoxPassword.ToString() == conn.MotDePasse)
             {
+                
                 this.Visibility = Visibility.Hidden;
             }
+
+            
+
         }
     }
 }
