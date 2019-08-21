@@ -188,18 +188,23 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = false;
             txtDetailMobile.IsEnabled = false;
             dpBirthday.IsEnabled = false;
+            btnSave.IsEnabled = false;
+            btnCancel.IsEnabled = false;
+            rbFemale.IsEnabled = false;
+            rbFemale.IsEnabled = false;
 
         }
 
         // disable CRUD buttons
         public void DisableButton()
         {
-            // Enable
+            // disable
             btnAdd.IsEnabled = false;
             btnEdit.IsEnabled = false;
             btnDelete.IsEnabled = false;
 
-            // disable
+
+            // Eable
             txtDetailAddress.IsEnabled = true;
             txtDetailEmail.IsEnabled = true;
             txtDetailFirstName.IsEnabled = true;
@@ -207,6 +212,10 @@ namespace StudentManager
             txtDetailLastName.IsEnabled = true;
             txtDetailMobile.IsEnabled = true;
             dpBirthday.IsEnabled = true;
+            btnSave.IsEnabled = true;
+            btnCancel.IsEnabled = true;
+            rbFemale.IsEnabled = true;
+            rbFemale.IsEnabled = true;
             //stackPanelGenderDp.IsEnabled = true;
 
         }
