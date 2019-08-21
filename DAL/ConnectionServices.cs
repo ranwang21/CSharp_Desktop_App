@@ -31,7 +31,7 @@ namespace DAL
                     {
 
                         objConnexion.Username = connexionReader["Username"].ToString();
-                        objConnexion.MotDePasse = connexionReader["MotDePass"].ToString();
+                        objConnexion.MotDePasse = connexionReader["MotDePasse"].ToString();
 
                     }
 
