@@ -33,6 +33,7 @@ namespace StudentManager
 
         public MainWindow()
         {
+            this.Visibility = Visibility.Hidden;
             InitializeComponent();
 
             // (1) -- store all student info in List<Student>

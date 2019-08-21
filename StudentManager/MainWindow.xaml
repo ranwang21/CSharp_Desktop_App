@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudentManager"
         mc:Ignorable="d"
         Title="Student Manager" Height="600" Width="1200">
-    <Grid MinWidth="1800" MinHeight="800">
+    <Grid Name="page" MinWidth="1800" MinHeight="800">
         <Grid.RowDefinitions>
             <RowDefinition Height="379*"/>
             <RowDefinition Height="248*"/>

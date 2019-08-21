@@ -19,8 +19,10 @@ namespace DAL
         {
             // instantialize the list of student to return
             List<Student> objList = new List<Student>();
+
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
+
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
@@ -38,14 +40,14 @@ namespace DAL
                         objList.Add(
                             new Student
                             {
-                                    ID = Convert.ToInt32(objReader["Id_Student"]),
-                                    gender = objReader["Gender"].ToString(),
-                                    firstName = objReader["FirstName"].ToString(),
-                                    lastName = objReader["LastName"].ToString(),
-                                    birthday = Convert.ToDateTime(objReader["Birthday"]),
-                                    adress = objReader["Adress"].ToString(),
-                                    mobile = objReader["Phone"].ToString(),
-                                    email = objReader["Email"].ToString()
+                                ID = Convert.ToInt32(objReader["Id_Student"]),
+                                gender = objReader["Gender"].ToString(),
+                                firstName = objReader["FirstName"].ToString(),
+                                lastName = objReader["LastName"].ToString(),
+                                birthday = Convert.ToDateTime(objReader["Birthday"]),
+                                adress = objReader["Adress"].ToString(),
+                                mobile = objReader["Phone"].ToString(),
+                                email = objReader["Email"].ToString()
                             }
                             );
                     }

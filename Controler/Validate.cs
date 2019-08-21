@@ -9,6 +9,10 @@ namespace Controler
 {
     public static class Validate
     {
+        public static void ValidateLogin(string username, string password)
+        {
+
+        }
 
         // check if its a valid email
         public static bool ValidateEmail(string email)
