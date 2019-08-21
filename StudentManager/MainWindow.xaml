@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:StudentManager"
         mc:Ignorable="d"
         Title="Student Manager" Height="600" Width="1200">
-    <Grid Name="page" MinWidth="1800" MinHeight="800">
+    <Grid Name="page" MinWidth="1800" MinHeight="800" Background="#FFC2C2C2">
         <Grid.RowDefinitions>
             <RowDefinition Height="379*"/>
             <RowDefinition Height="248*"/>
             <RowDefinition Height="173*"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Search a student" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="1174" FontWeight="Bold">
+        <GroupBox Header="Search a student" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="1174" FontWeight="Bold" Background="#FFBDBDBD">
             <Label Content="Student Number:" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
         </GroupBox>
         <TextBox x:Name="txtSearchID" HorizontalAlignment="Left" Height="23" Margin="127,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchID_TextChanged" />
@@ -21,7 +21,7 @@
         <Label Content="Mobile:" HorizontalAlignment="Left" Margin="684,51,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtSearchMobile" HorizontalAlignment="Left" Height="23" Margin="739,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchMobile_TextChanged"/>
 
-        <DataGrid x:Name="dgStudent" HorizontalAlignment="Left" Height="240" Margin="10,115,0,0" VerticalAlignment="Top" Width="1049" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="DgStudent_SelectionChanged" IsReadOnly="true">
+        <DataGrid x:Name="dgStudent" HorizontalAlignment="Left" Height="240" Margin="10,115,0,0" VerticalAlignment="Top" Width="1049" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="DgStudent_SelectionChanged" IsReadOnly="true" Background="White">
 
             <!--Font Color / Style-->
             <DataGrid.Resources>
@@ -49,7 +49,7 @@
         <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="1081,314,0,0" VerticalAlignment="Top" Width="100" Height="39" Click="BtnDelete_Click"/>
         <GroupBox Header="Student Detail" HorizontalAlignment="Left" Height="175" Margin="9,360,0,0" VerticalAlignment="Top" Width="1172" FontWeight="Bold" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
 
-            <StackPanel Name="stackPanelGenderDp" Orientation="Horizontal" Margin="0,22,0.2,0.2">
+            <StackPanel Name="stackPanelGenderDp" Orientation="Horizontal" Margin="0,22,0.2,0.2" Background="#FFCBCBCB">
                 <Label Content="Gender:" HorizontalAlignment="Left" Margin="10,76,20,0" VerticalAlignment="Top" RenderTransformOrigin="0.037,0.344" FontWeight="Normal" />
                 <RadioButton x:Name="rbMale" Content="male" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
                 <RadioButton x:Name="rbFemale" Content="female" HorizontalAlignment="Left" Margin="12,82,0,0" VerticalAlignment="Top" FontWeight="Normal"/>
