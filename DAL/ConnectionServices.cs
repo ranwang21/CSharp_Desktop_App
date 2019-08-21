@@ -26,7 +26,7 @@ namespace DAL
                 }
                 else
                 {
-                   Connexion objConnexion = new Connexion();
+                    Connexion objConnexion = new Connexion();
                     if (connexionReader.Read())
                     {
 
@@ -36,8 +36,8 @@ namespace DAL
                     }
 
 
-                connexionReader.Close();
-                return objConnexion;
+                    connexionReader.Close();
+                    return objConnexion;
                 }
             }
             catch (Exception e)

@@ -433,9 +433,9 @@ namespace DAL
                 "Birthday = '{4}', Adress = '{5}', Phone = '{6}', Email = '{7}' " +
                 "WHERE Id_Student = {0}";
 
-            sql = string.Format(sql, 
-                objStudent.ID, objStudent.gender, objStudent.firstName, 
-                objStudent.lastName, objStudent.birthday, objStudent.adress, 
+            sql = string.Format(sql,
+                objStudent.ID, objStudent.gender, objStudent.firstName,
+                objStudent.lastName, objStudent.birthday, objStudent.adress,
                 objStudent.mobile, objStudent.email);
 
             try

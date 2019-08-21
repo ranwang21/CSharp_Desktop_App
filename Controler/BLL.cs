@@ -61,5 +61,9 @@ namespace Controler
         {
             return StudentServices.IsExistSNO(txt);
         }
+        public static Connexion GetConnexions()
+        {
+            return ConnectionServices.GetConnexions();
+        }
     }
 }

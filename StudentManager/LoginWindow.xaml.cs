@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using Model;
 using System.Data;
 using Controler;
-using DAL;
+
 
 namespace StudentManager
 {
@@ -26,7 +26,6 @@ namespace StudentManager
         public LoginWindow()
         {
             InitializeComponent();
-
         }
 
         private void BouttonDeConnexion_Click(object sender, RoutedEventArgs e)
@@ -37,21 +36,17 @@ namespace StudentManager
             connUser.MotDePasse = BoxPassword.Password.ToString();
 
             // acquire correct username and password from server
-            Connexion connServer = ConnectionServices.GetConnexions();
+            Connexion connServer = BLL.GetConnexions();
 
-            if(connUser.Username.ToString() == connServer.Username.ToString() && connUser.MotDePasse.ToString() == connServer.MotDePasse.ToString())
+            if (connUser.Username.ToString() == connServer.Username.ToString() && connUser.MotDePasse.ToString() == connServer.MotDePasse.ToString())
             {
-
-            this.Visibility = Visibility.Hidden;
+                this.Visibility = Visibility.Hidden;
                 MainWindow window = new MainWindow();
-
             }
             else
             {
                 MessageBox.Show("Login failed, please check your input");
             }
-            
-
         }
     }
 }
