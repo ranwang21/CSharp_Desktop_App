@@ -18,7 +18,8 @@ namespace DAL
         // connection string
         //Environment.machine credit to Ahmad Sbeiti et Stephane Duval
         private static string connStrting = ConfigurationManager.ConnectionStrings[Environment.MachineName].ToString();
-
+        private static string userLogin = string.Empty;
+        
         // *************** UPDATE *********************************
         public static int Update(string sql)
         {

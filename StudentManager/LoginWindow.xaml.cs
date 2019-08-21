@@ -23,6 +23,8 @@ namespace StudentManager
     /// </summary>
     public partial class LoginWindow : Window
     {
+        private bool loginCheck; // check if login success
+
         public LoginWindow()
         {
             InitializeComponent();
@@ -36,17 +38,31 @@ namespace StudentManager
             connUser.MotDePasse = BoxPassword.Password.ToString();
 
             // acquire correct username and password from server
-            Connexion connServer = BLL.GetConnexions();
+            List<Connexion> connListServer = BLL.GetConnexions();
 
-            if (connUser.Username.ToString() == connServer.Username.ToString() && connUser.MotDePasse.ToString() == connServer.MotDePasse.ToString())
+            foreach (Connexion conn in connListServer)
+            {
+                if (connUser.Username.ToString() == conn.Username.ToString() && connUser.MotDePasse.ToString() == conn.MotDePasse.ToString())
+                {
+                    loginCheck = true;
+                    break;
+                }
+            }
+
+            if (loginCheck == true)
             {
                 this.Visibility = Visibility.Hidden;
+                // stock user who logins in
+                BLL.Login(connUser.Username.ToString());
+
+                // make appear main window
                 MainWindow window = new MainWindow();
             }
             else
             {
                 MessageBox.Show("Login failed, please check your input");
             }
+
         }
     }
 }

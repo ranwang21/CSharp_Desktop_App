@@ -14,6 +14,8 @@ namespace DAL
     /// </summary>
     public static class StudentServices
     {
+        public static string user = string.Empty; // store user who logins
+
         // show all student info in the table
         public static List<Student> GetAllStudent()
         {
@@ -21,7 +23,9 @@ namespace DAL
             List<Student> objList = new List<Student>();
 
             // prepare the sql code to call the GetReader method
-            string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
+
+            string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student WHERE Prof='{0}'";
+            sql = string.Format(sql, user);
 
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
@@ -69,8 +73,8 @@ namespace DAL
         {
 
             // prepare the sql code to call the GetReader method
-            string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student WHERE Id_Student={0}";
-            sql = string.Format(sql, ID);
+            string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student WHERE Id_Student={0} AND Prof='{1}'";
+            sql = string.Format(sql, ID, user);
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
@@ -116,7 +120,8 @@ namespace DAL
         // get total student count
         public static int GetStudentTotal()
         {
-            string sql = "SELECT COUNT(*) FROM student";
+            string sql = "SELECT COUNT(*) FROM student WHERE Prof='{0}'";
+            sql = string.Format(sql, user);
 
             try
             {
@@ -134,8 +139,8 @@ namespace DAL
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
-            sql += " WHERE Id_Student LIKE '{0}%'";
-            sql = string.Format(sql, ID);
+            sql += " WHERE Id_Student LIKE '{0}%' AND Prof='{1}'";
+            sql = string.Format(sql, ID, user);
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
@@ -183,8 +188,8 @@ namespace DAL
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
-            sql += " WHERE FirstName LIKE '{0}%'";
-            sql = string.Format(sql, firstName);
+            sql += " WHERE FirstName LIKE '{0}%' AND Prof='{1}'";
+            sql = string.Format(sql, firstName, user);
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
@@ -232,8 +237,8 @@ namespace DAL
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
-            sql += " WHERE LastName LIKE '{0}%'";
-            sql = string.Format(sql, lastName);
+            sql += " WHERE LastName LIKE '{0}%' AND Prof='{1}'";
+            sql = string.Format(sql, lastName, user);
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
@@ -281,8 +286,8 @@ namespace DAL
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
-            sql += " WHERE Phone LIKE '{0}%'";
-            sql = string.Format(sql, mobile);
+            sql += " WHERE Phone LIKE '{0}%' AND Prof='{1}'";
+            sql = string.Format(sql, mobile, user);
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
@@ -330,8 +335,8 @@ namespace DAL
         {
             // prepare the sql code to call the GetReader method
             string sql = "SELECT Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email FROM Student";
-            sql += " WHERE Email LIKE '{0}%'";
-            sql = string.Format(sql, email);
+            sql += " WHERE Email LIKE '{0}%' AND Prof='{1}'";
+            sql = string.Format(sql, email, user);
             // call the GetReader method (of DBHelper) with the sql above as parameter
             try
             {
@@ -406,12 +411,12 @@ namespace DAL
         {
             // prepare sql code
             string sql = "INSERT INTO Student " +
-                "(Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email) " +
-                "VALUES({0},'{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')";
+                "(Id_Student, Gender, FirstName, LastName, Birthday, Adress, Phone, Email, Prof) " +
+                "VALUES({0},'{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}')";
 
             sql = string.Format(sql, objStudent.ID, objStudent.gender,
                 objStudent.firstName, objStudent.lastName, objStudent.birthday,
-                objStudent.adress, objStudent.mobile, objStudent.email);
+                objStudent.adress, objStudent.mobile, objStudent.email, user);
 
             // access DB
             try
@@ -465,6 +470,12 @@ namespace DAL
 
                 throw ex;
             }
+        }
+
+        // check who logins in
+        public static void Login(string username)
+        {
+            user = username;
         }
     }
 }
