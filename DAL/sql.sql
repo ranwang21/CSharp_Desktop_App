@@ -7,7 +7,7 @@ BEGIN
 END
 GO
 
-PRINT 'Cr閍tion de la base de donn閑 DbTP'
+PRINT 'Cretion de la base de donnes DbTP'
 CREATE DATABASE DbTP
 GO
 
