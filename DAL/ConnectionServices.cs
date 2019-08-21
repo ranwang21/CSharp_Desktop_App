@@ -12,7 +12,7 @@ namespace DAL
     {
         public static Connexion GetConnexions()
         {
-            
+            // petit commentaire
             string login = "SELECT * FROM Connexion";
 
             try
