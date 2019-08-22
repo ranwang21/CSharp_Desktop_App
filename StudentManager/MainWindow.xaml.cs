@@ -467,13 +467,12 @@ namespace StudentManager
             Application.Current.Shutdown();
         }
 
+        // disconnect
         private void DisconnectButton_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            this.Visibility = Visibility.Hidden;
-            LoginWindow login = new LoginWindow();
-            login.Visibility = Visibility.Visible; 
-            */
+
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
     }
 }
