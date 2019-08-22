@@ -30,6 +30,7 @@ namespace StudentManager
             InitializeComponent();
             this.Visibility = Visibility.Visible;
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            this.BouttonDeConnexion.IsDefault = true;
 
         }
 
