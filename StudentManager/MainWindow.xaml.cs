@@ -466,5 +466,14 @@ namespace StudentManager
         {
             Application.Current.Shutdown();
         }
+
+        private void DisconnectButton_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            this.Visibility = Visibility.Hidden;
+            LoginWindow login = new LoginWindow();
+            login.Visibility = Visibility.Visible; 
+            */
+        }
     }
 }

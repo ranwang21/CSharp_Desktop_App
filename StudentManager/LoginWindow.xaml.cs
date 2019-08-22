@@ -28,6 +28,7 @@ namespace StudentManager
         public LoginWindow()
         {
             InitializeComponent();
+            this.Visibility = Visibility.Visible;
         }
 
         private void BouttonDeConnexion_Click(object sender, RoutedEventArgs e)
