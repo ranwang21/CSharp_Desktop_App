@@ -13,7 +13,9 @@
             <RowDefinition Height="173*"/>
         </Grid.RowDefinitions>
         <GroupBox Header="Search a student" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="1174" FontWeight="Bold" Background="#FFBDBDBD">
-            <Button Name ="DisconnectButton" Content="Button" HorizontalAlignment="Left" Height="27" Margin="1079,12,0,0" VerticalAlignment="Top" Width="63" Click="DisconnectButton_Click"/>
+            <Button Name ="DisconnectButton" Content="Disconnect" HorizontalAlignment="Left" Height="27" Margin="1079,22,0,0" VerticalAlignment="Top" Width="63" Click="DisconnectButton_Click">
+                
+            </Button>
         </GroupBox>
         <TextBox x:Name="txtSearchID" HorizontalAlignment="Left" Height="23" Margin="127,51,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TxtSearchID_TextChanged" />
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="272,51,0,0" VerticalAlignment="Top"/>
