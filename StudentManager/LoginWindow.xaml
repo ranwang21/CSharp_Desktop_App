@@ -12,10 +12,10 @@
             <RowDefinition Height="131*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left" Height="17" Margin="10,40,0,0" TextWrapping="Wrap" Text="Username : " VerticalAlignment="Top" Width="65"/>
-        <TextBox Name="BoxUsername" HorizontalAlignment="Left" Height="17" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+        <TextBox Name="BoxUsername" HorizontalAlignment="Left" Height="17" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" TabIndex="0"/>
         <TextBlock HorizontalAlignment="Left" Height="18" Margin="10,80,0,0" TextWrapping="Wrap" Text="Password : " VerticalAlignment="Top" Width="65"/>
         <Button Name="BouttonDeConnexion" Content="Connection" HorizontalAlignment="Center" Height="54" Margin="69,10.8,69,0" VerticalAlignment="Top" Width="152" Click="BouttonDeConnexion_Click" Grid.Row="1" Background="#FFFAFAFA"/>
-        <PasswordBox x:Name="BoxPassword" HorizontalAlignment="Left" Height="18" Margin="80,80,0,0" VerticalAlignment="Top" Width="143" Cursor=""/>
+        <PasswordBox x:Name="BoxPassword" HorizontalAlignment="Left" Height="18" Margin="80,80,0,0" VerticalAlignment="Top" Width="143" Cursor="" TabIndex="1"/>
 
     </Grid>
 </Window>
