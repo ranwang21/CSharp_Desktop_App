@@ -6,16 +6,26 @@
         xmlns:local="clr-namespace:StudentManager"
         mc:Ignorable="d"
         Title="Login" Height="300" Width="300">
-    <Grid Name="LoginGrid" Margin="0,0,3.6,0" Background="#FFCECECE">
+
+    <Grid Name="LoginGrid" Margin="0,0,3.6,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="139*"/>
             <RowDefinition Height="131*"/>
         </Grid.RowDefinitions>
         <TextBlock HorizontalAlignment="Left" Height="17" Margin="10,40,0,0" TextWrapping="Wrap" Text="Username : " VerticalAlignment="Top" Width="65"/>
-        <TextBox Name="BoxUsername" HorizontalAlignment="Left" Height="17" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143"/>
+        <TextBox Name="BoxUsername" HorizontalAlignment="Left" Height="17" Margin="80,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" BorderThickness="1" BorderBrush="Black"/>
         <TextBlock HorizontalAlignment="Left" Height="18" Margin="10,80,0,0" TextWrapping="Wrap" Text="Password : " VerticalAlignment="Top" Width="65"/>
-        <Button Name="BouttonDeConnexion" Content="Connection" HorizontalAlignment="Center" Height="54" Margin="69,10.8,69,0" VerticalAlignment="Top" Width="152" Click="BouttonDeConnexion_Click" Grid.Row="1" Background="#FFFAFAFA"/>
-        <PasswordBox x:Name="BoxPassword" HorizontalAlignment="Left" Height="18" Margin="80,80,0,0" VerticalAlignment="Top" Width="143" Cursor=""/>
+        <Button Name="BouttonDeConnexion" Content="Connection" HorizontalAlignment="Center" Height="54" Margin="69,10.8,69,0" VerticalAlignment="Top" Width="152" Click="BouttonDeConnexion_Click" Grid.Row="1" FontFamily="Lucida Sans Unicode" FontSize="22" RenderTransformOrigin="1,1" BorderThickness="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <PasswordBox x:Name="BoxPassword" HorizontalAlignment="Left" Height="18" Margin="80,80,0,0" VerticalAlignment="Top" Width="143" Cursor="" BorderThickness="1" SelectionBrush="Black" BorderBrush="Black"/>
 
     </Grid>
 </Window>
