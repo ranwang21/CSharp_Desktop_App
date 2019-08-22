@@ -35,7 +35,11 @@ namespace StudentManager
         {
             this.Visibility = Visibility.Visible;
 
+
             InitializeComponent();
+
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
 
             // (1) -- store all student info in List<Student>
             dgStudent.Items.Clear(); // first clear former collections in the items

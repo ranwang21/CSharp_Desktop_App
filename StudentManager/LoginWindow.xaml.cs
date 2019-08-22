@@ -29,6 +29,8 @@ namespace StudentManager
         {
             InitializeComponent();
             this.Visibility = Visibility.Visible;
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+
         }
 
         private void BouttonDeConnexion_Click(object sender, RoutedEventArgs e)
