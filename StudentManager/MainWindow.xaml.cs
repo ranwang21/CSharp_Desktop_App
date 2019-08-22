@@ -34,7 +34,7 @@ namespace StudentManager
         public MainWindow()
         {
             this.Visibility = Visibility.Visible;
-
+            
 
             InitializeComponent();
 
@@ -196,6 +196,7 @@ namespace StudentManager
             btnCancel.IsEnabled = false;
             rbFemale.IsEnabled = false;
             rbFemale.IsEnabled = false;
+            this.btnSave.IsDefault = true;
 
         }
 
