@@ -1,5 +1,5 @@
 # CSharp_Desktop_App
-This is a desktop app built on C# to make CRUD operations on student database on a GUI.
+This is a desktop app built on C# to make CRUD operations on student database on a GUI.<br>
 Techstack: C#, .Net framwork, ADO .NET, SQL Server, and WPF.
 
 ## install
