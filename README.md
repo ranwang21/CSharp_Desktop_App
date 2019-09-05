@@ -77,3 +77,6 @@ Change the SQL Connection String in the **App.config**:
 ```
 <add name="[YOUR MACHINE NAME]" connectionString="Data Source=[YOUR DATABASE];Initial Catalog=DbTP;User Id=[YOUR DATABASE USER NAME];Password=[YOUR DATABASE PASSWORD]"/>
 ```
+
+## use
+When the program starts, a login window appears, you can use one of the login/password to test the program, for example: `username: yayeet; password: yeet`.
